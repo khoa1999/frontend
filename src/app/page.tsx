@@ -9,6 +9,8 @@ export default function Home() {
   // const [errorMessage, setErrorMessage] = useState(""); // Example: Can be added back for error handling
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false); // New state for "Remember me"
+  // const [forgotPasswordEmail, setForgotPasswordEmail] = useState(""); // This state is not used if the element is a checkbox
+  //const [requestForgotPassword, setRequestForgotPassword] = useState(false); // New state for the "Forgot password?" checkbox
 
   const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form submission
@@ -100,7 +102,8 @@ export default function Home() {
           </div>
 
           {/* Remember me / Forgot password row */}
-          <div className="w-full flex justify-between items-center text-sm px-1"> {/* px-1 for slight padding from edges */}
+          {/* Adjusted for compactness and centering: w-full within max-w-sm allows justify-between to work, form's items-center centers this block */}
+          <div className="flex w-full max-w-md justify-between items-center text-base px-1 md:max-w-lg"> {/* Increased text-sm to text-base, max-w-sm to max-w-md, md:max-w-md to md:max-w-lg */}
             <div className="flex items-center">
               <input
                 id="remember-me"
@@ -108,19 +111,21 @@ export default function Home() {
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="h-4 w-4 text-blue-500 border-gray-300 rounded focus:ring-blue-400 focus:ring-offset-0"
+                className="h-5 w-5 text-blue-500 border-gray-300 rounded focus:ring-blue-400 focus:ring-offset-0" // Increased checkbox size h-4 w-4 to h-5 w-5
               />
               <label htmlFor="remember-me" className="ml-2 text-white select-none">
                 Remember me
               </label>
             </div>
-            <a href="#" className="text-white hover:text-gray-300 hover:underline">
-              Forgot password?
-            </a>
+            <div className="flex items-center gap-2">
+              <a href="#" className="text-white hover:text-gray-300 hover:underline whitespace-nowrap">
+                Forgot password?
+              </a>
+            </div>
           </div>
 
           {/* Language Selector Row */}
-          <div className="w-full flex justify-center items-center text-sm">
+          <div className="w-full flex justify-center items-center text-sm pt-1"> {/* Added pt-1 for a bit more space from the row above */}
             <button type="button" className="flex items-center text-white cursor-pointer hover:text-gray-300 p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#bb2929]">
               <span role="img" aria-label="US flag" className="mr-1.5 text-lg">🇺🇸</span>
               <span>EN</span>
@@ -130,7 +135,7 @@ export default function Home() {
           {/* Login button */}
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-2xl py-3 px-16 rounded-full transition w-full md:w-auto" // Full width on small screens, mt-6 removed
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-3xl py-3.5 px-20 rounded-full transition w-full md:w-auto" // Increased text-2xl to text-3xl, py-3 to py-3.5, px-16 to px-20
           >
             Login
           </button>
