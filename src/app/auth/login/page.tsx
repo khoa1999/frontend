@@ -118,7 +118,7 @@ export default function LoginPage() {
 
         {/* Remember me / Forgot password row */}
         {/* Adjusted for compactness and centering: w-full within max-w-sm allows justify-between to work, form's items-center centers this block */}
-        <div className="flex w-full max-w-md justify-between items-center text-base px-1 md:max-w-lg"> {/* Increased text-sm to text-base, max-w-sm to max-w-md, md:max-w-md to md:max-w-lg */}
+        <div className="flex flex-col sm:flex-row w-full max-w-md sm:justify-between items-center text-base px-1 md:max-w-lg gap-2 sm:gap-0"> {/* Stacks vertically by default, row on sm screens. Adds gap when stacked. */}
           <div className="flex items-center">
             <input
               id="remember-me"
@@ -128,12 +128,12 @@ export default function LoginPage() {
               onChange={(e) => setRememberMe(e.target.checked)}
               className="h-6 w-6 text-blue-500 border-gray-300 rounded focus:ring-blue-400 focus:ring-offset-0" // Increased checkbox size h-4 w-4 to h-5 w-5
             />
-            <label htmlFor="remember-me" className="ml-2.5 text-white select-none">
+            <label htmlFor="remember-me" className="ml-2.5 text-white select-none text-lg"> {/* Increased text size */}
               Remember me
             </label>
           </div>
           <div className="flex items-center gap-2">
-            <a href="#" className="text-white hover:text-gray-300 hover:underline whitespace-nowrap">
+            <a href="#" className="text-white hover:text-gray-300 hover:underline whitespace-nowrap text-lg"> {/* Increased text size */}
               Forgot password?
             </a>
           </div>
@@ -149,7 +149,7 @@ export default function LoginPage() {
               aria-haspopup="true"
               aria-expanded={isLangMenuOpen}
             >
-              <span role="img" aria-label={`${selectedLanguage.name} flag`} className="mr-1.5 text-lg">{selectedLanguage.flag}</span>
+              <span role="img" aria-label={`${selectedLanguage.name} flag`} className="mr-1.5 text-xl">{selectedLanguage.flag}</span> {/* Increased flag size */}
               <span>{selectedLanguage.code}</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={`w-4 h-4 ml-1 transition-transform duration-200 ${isLangMenuOpen ? 'rotate-180' : ''}`}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
