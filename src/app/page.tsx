@@ -3,10 +3,10 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
-  const [username, setUsername] = useState("");
+  /*const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");*/
   const [showPassword,setShowPassword] = useState(false);
 
 
