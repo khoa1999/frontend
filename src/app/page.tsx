@@ -14,7 +14,7 @@ export default function Home() {
     <div className="flex min-h-screen items-center justify-center bg-[#bb2929] [scroll-padding-bottom:40vh]">
       <div className="flex flex-col items-center w-full max-w-3xl p-10 rounded-xl shadow-lg">
         {/* Firefighter image */}
-        <img
+        <Image
           src="/firefighter.svg"
           alt="Firefighter"
           className="w-28 h-28 mb-6"
