@@ -42,7 +42,7 @@ export default function LoginPage() {
           alt="Firefighter icon"  // Slightly more descriptive alt text
           width={192}             // Largest width the image will render at (for lg screens, 8rem * 16px/rem)
           height={192}            // Largest height the image will render at (for lg screens, 8rem * 16px/rem)
-          className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mb-6" // Responsive classes
+          className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mb-4" // Reduced bottom margin from mb-6 to mb-4
         />
       </div>
       {/* Title */}
