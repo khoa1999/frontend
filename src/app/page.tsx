@@ -1,32 +1,41 @@
 "use client"; // Required for useState
 import Image from "next/image";
-import { useState } from "react";
+import { useState, FormEvent } from "react"; // Added FormEvent
 
 export default function Home() {
-  /*const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");*/
-  const [showPassword,setShowPassword] = useState(false);
+  const [username, setUsername] = useState(""); // Now used
+  const [password, setPassword] = useState(""); // Now used
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); // Example: Can be added back when login logic is implemented
+  // const [errorMessage, setErrorMessage] = useState(""); // Example: Can be added back for error handling
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false); // New state for "Remember me"
 
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Prevent default form submission
+    // TODO: Implement actual login logic here
+    console.log("Login attempt with:", { username, password, rememberMe });
+    // Example: setErrorMessage("Invalid credentials"); setIsLoggedIn(true);
+  };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#bb2929] [scroll-padding-bottom:40vh]">
-      <div className="flex flex-col items-center w-full max-w-3xl p-10 rounded-xl shadow-lg">
+    <div className="flex min-h-screen items-center justify-center bg-[#bb2929] [scroll-padding-bottom:40vh] py-8"> {/* Added py-8 for overall page padding */}
+      <div className="flex flex-col items-center w-full max-w-3xl p-6 md:p-10 rounded-xl shadow-lg"> {/* Adjusted padding for responsiveness */}
         {/* Firefighter image */}
         <Image
-          src="/firefighter.svg"
-          alt="Firefighter"
-          className="w-28 h-28 mb-6"
+          src="/firefighter.svg" // Path to your image
+          alt="Firefighter icon"  // Slightly more descriptive alt text
+          width={128}             // Largest width the image will render at (for lg screens, 8rem * 16px/rem)
+          height={128}            // Largest height the image will render at (for lg screens, 8rem * 16px/rem)
+          className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mb-6" // Responsive classes
         />
         {/* Title */}
         <h1 className="text-4xl font-bold text-white mb-8 text-center">
           First&nbsp; Responder Service
         </h1>
         {/* Login form */}
-        <form className="w-full flex flex-col items-center gap-6">
+        <form onSubmit={handleLogin} className="w-full flex flex-col items-center gap-4"> {/* Reduced gap from gap-6 to gap-4 */}
           {/* Username row */}
-          <div className="flex flex-col md:flex-row w-full items-center md:items-start mb-2">
+          <div className="flex flex-col md:flex-row w-full items-center md:items-start"> {/* Removed mb-2, form gap will handle spacing */}
             <label
               htmlFor="username"
               className="text-white text-2xl font-semibold mb-2 md:mb-0 md:mr-4 w-full md:w-40 text-left"
@@ -37,6 +46,8 @@ export default function Home() {
               id="username"
               type="text"
               className="rounded-full px-6 py-3 bg-gray-200 focus:outline-none text-lg w-full md:flex-1"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               autoComplete="username"
             />
           </div>
@@ -54,6 +65,8 @@ export default function Home() {
                 id="password"
                 type={showPassword ? "text" : "password"}
                 // Added pl-6 and pr-16 for padding, pr-16 makes space for the button
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="rounded-full pl-6 pr-16 py-3 bg-gray-200 focus:outline-none text-lg w-full"
                 autoComplete="current-password"
               />
@@ -85,10 +98,39 @@ export default function Home() {
               </button>
             </div>
           </div>
+
+          {/* Remember me / Forgot password row */}
+          <div className="w-full flex justify-between items-center text-sm px-1"> {/* px-1 for slight padding from edges */}
+            <div className="flex items-center">
+              <input
+                id="remember-me"
+                name="remember-me"
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="h-4 w-4 text-blue-500 border-gray-300 rounded focus:ring-blue-400 focus:ring-offset-0"
+              />
+              <label htmlFor="remember-me" className="ml-2 text-white select-none">
+                Remember me
+              </label>
+            </div>
+            <a href="#" className="text-white hover:text-gray-300 hover:underline">
+              Forgot password?
+            </a>
+          </div>
+
+          {/* Language Selector Row */}
+          <div className="w-full flex justify-center items-center text-sm">
+            <button type="button" className="flex items-center text-white cursor-pointer hover:text-gray-300 p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#bb2929]">
+              <span role="img" aria-label="US flag" className="mr-1.5 text-lg">🇺🇸</span>
+              <span>EN</span>
+            </button>
+          </div>
+
           {/* Login button */}
           <button
             type="submit"
-            className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold text-2xl py-3 px-16 rounded-full transition"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-2xl py-3 px-16 rounded-full transition w-full md:w-auto" // Full width on small screens, mt-6 removed
           >
             Login
           </button>
