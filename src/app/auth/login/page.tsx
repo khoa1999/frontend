@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState, FormEvent } from "react"; // Added FormEvent
 
-export default function Home() {
+export default function LoginPage() {
   const [username, setUsername] = useState(""); // Now used
   const [password, setPassword] = useState(""); // Now used
   // const [isLoggedIn, setIsLoggedIn] = useState(false); // Example: Can be added back when login logic is implemented
@@ -40,9 +40,9 @@ export default function Home() {
         <Image
           src="/firefighter.svg" // Path to your image
           alt="Firefighter icon"  // Slightly more descriptive alt text
-          width={128}             // Largest width the image will render at (for lg screens, 8rem * 16px/rem)
-          height={128}            // Largest height the image will render at (for lg screens, 8rem * 16px/rem)
-          className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mb-6" // Responsive classes
+          width={192}             // Largest width the image will render at (for lg screens, 8rem * 16px/rem)
+          height={192}            // Largest height the image will render at (for lg screens, 8rem * 16px/rem)
+          className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mb-6" // Responsive classes
         />
       </div>
       {/* Title */}
@@ -62,7 +62,7 @@ export default function Home() {
           <input
             id="username"
             type="text"
-            className="rounded-full px-6 py-3 bg-gray-200 focus:outline-none text-lg w-full md:flex-1"
+            className="rounded-full px-6 py-2.5 bg-gray-200 focus:outline-none text-lg w-full md:flex-1 text-black"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoComplete="username"
@@ -84,7 +84,7 @@ export default function Home() {
               // Added pl-6 and pr-16 for padding, pr-16 makes space for the button
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="rounded-full pl-6 pr-16 py-3 bg-gray-200 focus:outline-none text-lg w-full"
+              className="rounded-full pl-6 pr-16 py-2.5 bg-gray-200 focus:outline-none text-lg w-full text-black"
               autoComplete="current-password"
             />
             <button
@@ -126,9 +126,9 @@ export default function Home() {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="h-5 w-5 text-blue-500 border-gray-300 rounded focus:ring-blue-400 focus:ring-offset-0" // Increased checkbox size h-4 w-4 to h-5 w-5
+              className="h-6 w-6 text-blue-500 border-gray-300 rounded focus:ring-blue-400 focus:ring-offset-0" // Increased checkbox size h-4 w-4 to h-5 w-5
             />
-            <label htmlFor="remember-me" className="ml-2 text-white select-none">
+            <label htmlFor="remember-me" className="ml-2.5 text-white select-none">
               Remember me
             </label>
           </div>
@@ -163,7 +163,7 @@ export default function Home() {
                     onClick={() => handleLanguageSelect(lang)}
                     className="w-full flex items-center px-3 py-1.5 text-left text-gray-700 hover:bg-gray-100 rounded-md text-sm"
                   >
-                    <span role="img" aria-label={`${lang.name} flag`} className="mr-2 text-lg">{lang.flag}</span>
+                    <span role="img" aria-label={`${lang.name} flag`} className="mr-2 text-xl">{lang.flag}</span>
                     <span>{lang.name}</span>
                   </button>
                 ))}
@@ -175,7 +175,7 @@ export default function Home() {
         {/* Login button */}
         <button
           type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-3xl py-3.5 px-20 rounded-full transition w-full md:w-auto" // Increased text-2xl to text-3xl, py-3 to py-3.5, px-16 to px-20
+          className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-3xl py-3 px-16 rounded-full transition w-full md:w-auto" // Increased text-2xl to text-3xl, py-3 to py-3.5, px-16 to px-20
         >
           Login
         </button>
