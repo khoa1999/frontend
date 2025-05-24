@@ -15,9 +15,9 @@ export default function Home() {
   // State for language selector
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const languages = [
-    { code: "EN", name: "English", flag: "🇺🇸" },
-    { code: "DE", name: "Deutsch", flag: "DE" },
-    { code: "VN", name: "Vietnam", flag: "VN" },
+    { code: "EN", name: "English", flag: "🇺🇸" }, // English
+    { code: "DE", name: "Deutsch", flag: "🇩🇪" }, // German
+    { code: "VI", name: "Tiếng Việt", flag: "🇻🇳" }, // Vietnamese
   ];
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
 
