@@ -1,12 +1,12 @@
 "use client"; // Required for useState
-import Image from "next/image";
 import { useState, FormEvent } from "react"; // Added FormEvent
+import Link from "next/link";
 
 export default function LoginPage() {
   const [username, setUsername] = useState(""); // Now used
   const [password, setPassword] = useState(""); // Now used
+  const [errorMessage, setErrorMessage] = useState(""); // State for error messages
   // const [isLoggedIn, setIsLoggedIn] = useState(false); // Example: Can be added back when login logic is implemented
-  // const [errorMessage, setErrorMessage] = useState(""); // Example: Can be added back for error handling
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false); // New state for "Remember me"
   // const [forgotPasswordEmail, setForgotPasswordEmail] = useState(""); // This state is not used if the element is a checkbox
@@ -28,29 +28,20 @@ export default function LoginPage() {
 
   const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form submission
+    setErrorMessage(""); // Clear previous errors
     // TODO: Implement actual login logic here
     console.log("Login attempt with:", { username, password, rememberMe });
+    // Example: Simulate an error
+    if (username !== "admin" || password !== "password") {
+      setErrorMessage("Invalid username or password. Please try again.");
+    }
     // Example: setErrorMessage("Invalid credentials"); setIsLoggedIn(true);
   };
 
   return (
     <>
-      {/* Firefighter image - Wrapped in a flex container to center it */}
-      <div className="flex justify-center">
-        <Image
-          src="/firefighter.svg" // Path to your image
-          alt="Firefighter icon"  // Slightly more descriptive alt text
-          width={192}             // Largest width the image will render at (for lg screens, 8rem * 16px/rem)
-          height={192}            // Largest height the image will render at (for lg screens, 8rem * 16px/rem)
-          className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mb-4" // Reduced bottom margin from mb-6 to mb-4
-        />
-      </div>
-      {/* Title */}
-      <h1 className="text-4xl font-bold text-white mb-8 text-center">
-        First&nbsp; Responder Service
-      </h1>
       {/* Login form */}
-      <form onSubmit={handleLogin} className="w-full flex flex-col items-center gap-4"> {/* Reduced gap from gap-6 to gap-4 */}
+      <form onSubmit={handleLogin} className="w-full flex flex-col items-center gap-4 mt-8"> {/* Added mt-8 for spacing from title in layout */}
         {/* Username row */}
         <div className="flex flex-col md:flex-row w-full items-center md:items-start"> {/* Removed mb-2, form gap will handle spacing */}
           <label
@@ -133,9 +124,9 @@ export default function LoginPage() {
             </label>
           </div>
           <div className="flex items-center gap-2">
-            <a href="#" className="text-white hover:text-gray-300 hover:underline whitespace-nowrap text-lg"> {/* Increased text size */}
+            <Link href="/auth/recovery" className="text-white hover:text-gray-300 hover:underline whitespace-nowrap text-lg"> {/* Increased text size */}
               Forgot password?
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -172,14 +163,22 @@ export default function LoginPage() {
           </div>
         </div>
 
+        {/* Error Message Display */}
+        {errorMessage && (
+          <div className="w-full max-w-md md:max-w-lg p-3 my-2 rounded-md text-center text-base bg-red-100 text-red-700">
+            {errorMessage}
+          </div>
+        )}
+
         {/* Login button */}
-        <button
+        <button // Changed from custom Button to standard button for clarity if Button component is not defined here
           type="submit"
+          onClick={() => { setErrorMessage(""); }} // Error is cleared on new submit attempt in handleLogin
           className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-3xl py-3 px-16 rounded-full transition w-full md:w-auto" // Increased text-2xl to text-3xl, py-3 to py-3.5, px-16 to px-20
         >
           Login
         </button>
       </form>
-  </>
+    </>
   );
 }
