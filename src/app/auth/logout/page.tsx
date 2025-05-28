@@ -23,7 +23,7 @@ export default function LogoutPage() {
           try {
             const errorData = await response.json();
             errorMsg = errorData.message || errorMsg;
-          } catch (e) { /* Ignore parsing error, use default */ }
+          } catch { /* Ignore parsing error, use default */ }
           throw new Error(errorMsg);
         }
         setMessage('You have been logged out successfully.');
