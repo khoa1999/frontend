@@ -13,7 +13,7 @@ const PUBLIC_PATHS = [
   '/auth/recovery',      // Recovery page
   '/auth/logout',        // Logout page (page that might trigger API call)
   '/auth/register',
-  '/favicon.ico',        // Favicon
+  //'/favicon.ico',        // Favicon
   // Example of a public directory: '/public-docs/'
 ];
 
