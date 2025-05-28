@@ -21,7 +21,7 @@ export default function AuthLayout({
               alt="Firefighter icon"
               width={192}
               height={192}
-              className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:w-48" // Removed mb-4 as space-y on parent will handle it
+              className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48" // Removed mb-4 as space-y on parent will handle it
             />
           </div>
           <h1 className="mt-6 text-center text-4xl font-bold tracking-tight text-white"> {/* Added mt-6 for spacing from logo, tracking-tight for aesthetics */}
