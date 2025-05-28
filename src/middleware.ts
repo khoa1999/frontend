@@ -7,8 +7,7 @@ const AUTH_COOKIE_NAME = 'sessionToken';
 
 // Paths that do NOT require authentication.
 // For prefix matches (like directories), ensure they end with a slash.
-const PUBLIC_PATHS = [
-  '/',                   // Landing page (adjust as needed)
+const PUBLIC_PATHS = [                  // Landing page (adjust as needed)
   '/auth/login',
   '/auth/recovery',      // Recovery page
   '/auth/logout',        // Logout page (page that might trigger API call)
