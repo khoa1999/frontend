@@ -12,12 +12,12 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#bb2929] py-8 px-4 sm:px-6 lg:px-8">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#32cd32] py-8 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-lg space-y-8"> {/* Adjusted max-width and added space-y for consistent spacing */}
         <div>
           <div className="flex justify-center">
             <Image
-              src="/firefighter.svg"
+              src="/farmer.svg"
               alt="Firefighter icon"
               width={192}
               height={192}
