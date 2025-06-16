@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google"; // Assuming fonts are not the immediate focus
 import "./globals.css";
+import Header from "@/components/Header"; // Importing the Header component
 
 /* const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 */
 
 export const metadata: Metadata = {
-  title: "First Responder Service", // More specific title
-  description: "Login to the First Responder Service application.", // More specific description
+  title: "Farmer Service", // More specific title
+  description: "Login to the Farmer Service application.", // More specific description
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -46,6 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Header/> {/* Include the Header component */}
       <body>
         {children}
       </body>
