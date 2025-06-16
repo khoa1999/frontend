@@ -25,7 +25,7 @@ export default function AuthLayout({
             />
           </div>
           <h1 className="mt-6 text-center text-4xl font-bold tracking-tight text-white"> {/* Added mt-6 for spacing from logo, tracking-tight for aesthetics */}
-            First&nbsp; Responder Service
+            Farmer Service&nbsp;
           </h1>
         </div>
         {children} {/* This is where the content of login/page.tsx (the form) will be rendered */}
