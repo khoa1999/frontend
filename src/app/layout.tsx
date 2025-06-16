@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google"; // Assuming fonts are not the immediate focus
 import "./globals.css";
-import Header from "@/components/Header"; // Importing the Header component
-import { cookies } from "next/headers";
 /* const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -45,13 +43,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const session = cookies().get("sessionToken");
-
-    const isLoggedIn = !!session; // true if session cookie exists
   return (
     <html lang="en">
       <body>
-        {isLoggedIn && <Header />}
         {/* The Header component will be rendered at the top of every page */}
         {children}
       </body>
