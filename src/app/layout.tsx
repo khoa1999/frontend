@@ -47,8 +47,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Header/> {/* Include the Header component */}
       <body>
+        <Header />
+        {/* The Header component will be rendered at the top of every page */}
         {children}
       </body>
     </html>
