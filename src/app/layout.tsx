@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 */
-
+export const runtime = 'nodejs';
 export const metadata: Metadata = {
   title: "Farmer Service", // More specific title
   description: "Login to the Farmer Service application.", // More specific description
