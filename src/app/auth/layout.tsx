@@ -1,9 +1,9 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import ImageCarousel from "@/components/ImageCarousel";
 
 export const metadata: Metadata = {
-  // You can set specific metadata for auth pages here if needed
-  // title: "Authentication - First Responder Service",
+  title: "Authentication - Farmer Service",
 };
 
 export default function AuthLayout({
@@ -11,24 +11,37 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const carouselImages = [
+    { src: "/carousel/image1.jpg", alt: "Slide 1" },
+    { src: "/carousel/image2.jpg", alt: "Slide 2" },
+    { src: "/carousel/image3.jpg", alt: "Slide 3" },
+  ];
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#32cd32] py-8 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-lg space-y-8"> {/* Adjusted max-width and added space-y for consistent spacing */}
-        <div>
-          <div className="flex justify-center">
-            <Image
-              src="/farmer.svg"
-              alt="Farmer icon"
-              width={192}
-              height={192}
-              className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48" // Removed mb-4 as space-y on parent will handle it
-            />
+    <div className="min-h-screen grid grid-cols-1 md:grid-cols-2">
+      {/* Left side: Image Carousel (full height, visible on medium screens and up) */}
+      <div className="hidden md:block">
+        <ImageCarousel images={carouselImages} className="hidden md:block"/>
+      </div>
+
+      {/* Right side: Auth Form and content */}
+      <div className="flex flex-col items-center justify-center bg-lime-500/20 p-4 sm:p-6 md:p-8">
+        <div className="w-full max-w-lg space-y-8 rounded-2xl bg-green-600 p-8 shadow-2xl sm:p-12">
+          <div>
+            <div className="flex justify-center">
+              <Image
+                src="/farmer.svg"
+                alt="Farmer icon"
+                width={128}
+                height={128}
+                className="w-24 h-24"
+              />
+            </div>
+            <h1 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
+              Farmer Service
+            </h1>
           </div>
-          <h1 className="mt-6 text-center text-4xl font-bold tracking-tight text-white"> {/* Added mt-6 for spacing from logo, tracking-tight for aesthetics */}
-            Farmer Service&nbsp;
-          </h1>
+          {children}
         </div>
-        {children} {/* This is where the content of login/page.tsx (the form) will be rendered */}
       </div>
     </div>
   );
