@@ -66,6 +66,6 @@ export function middleware(request: NextRequest) {
 // This matcher excludes static files, images, Next.js internals, and public assets
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|.*\\.svg|favicon.ico|images|api/auth/callback).*)',
+    '/((?!_next/static|_next/image|carousel/|.*\\.svg|favicon.ico|images|api/auth/callback).*)',
   ],
 };
