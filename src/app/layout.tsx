@@ -1,42 +1,21 @@
-import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google"; // Assuming fonts are not the immediate focus
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
-/* const geistSans = Geist({
-  variable: "--font-geist-sans",
+
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-sans",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-*/
-export const runtime = 'nodejs';
 export const metadata: Metadata = {
-  title: "Farmer Service", // More specific title
-  description: "Login to the Farmer Service application.", // More specific description
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    // maximumScale: 1, // Optional: uncomment if you want to prevent users from zooming
-  },
+  title: "Farmer Service",
+  description: "A comprehensive service for modern farmers.",
 };
-/*
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
-}*/
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,
@@ -44,9 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        {/* The Header component will be rendered at the top of every page */}
+    <html lang="en" className="h-full">
+      <body className={`${inter.variable} h-full font-sans antialiased`}>
         {children}
       </body>
     </html>
