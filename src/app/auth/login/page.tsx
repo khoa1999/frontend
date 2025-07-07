@@ -108,8 +108,8 @@ export default function LoginPage() {
         </div>
 
         {/* Remember me / Forgot password row */}
-        {/* Adjusted for compactness and centering: w-full within max-w-sm allows justify-between to work, form's items-center centers this block */}
-        <div className="flex flex-col sm:flex-row w-full max-w-md sm:justify-between items-center text-base px-1 md:max-w-lg gap-2 sm:gap-0"> {/* Stacks vertically by default, row on sm screens. Adds gap when stacked. */}
+        {/* Adjusted for responsiveness and alignment. */}
+        <div className="flex flex-col sm:flex-row w-full sm:justify-between items-center text-base px-1 gap-2 sm:gap-0"> {/* Stacks vertically by default, row on sm screens. Adds gap when stacked. */}
           <div className="flex items-center">
             <input
               id="remember-me"
@@ -165,7 +165,7 @@ export default function LoginPage() {
 
         {/* Error Message Display */}
         {errorMessage && (
-          <div className="w-full max-w-md md:max-w-lg p-3 my-2 rounded-md text-center text-base bg-red-100 text-red-700">
+          <div className="w-full p-3 my-2 rounded-md text-center text-base bg-red-100 text-red-700">
             {errorMessage}
           </div>
         )}
