@@ -3,11 +3,11 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export const runtime = 'nodejs';      // guarantees full cookie support on Vercel
+export const runtime = 'nodejs';
 
 export default async function Index() {
-  const isLoggedIn = !!(await cookies().get('sessionToken'));
+  const cookieStore = await cookies();
+  const isLoggedIn = !!cookieStore.get('sessionToken');
 
-  // Instantly send the user where they belong
   redirect(isLoggedIn ? '/dashboard' : '/auth/login');
 }
